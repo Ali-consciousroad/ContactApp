@@ -3,19 +3,29 @@ import React, { Component } from 'react'
 
 class ListContacts extends Component {
     // render the UI of our component
-    render() {
-        // Show the this.props object inside the console
+    // Show the this.props object inside the console
         // console.log('Props', this.props)
+    render() {
         return (
             <ol className='contact-list'>
                 {this.props.contacts.map((contact) => (
-                    <div>
-                        <li>Hello world</li>
-                        {/* This allows us to update only the specific element and not all the list */}
-                        <li key={contact.id}>
-                        {contact.name}
-                        </li>
-                    </div>
+                     <li key={contact.id} className='contact-list-item'>
+                        <div
+                            className='contact-avatar'
+                            style={{
+                                backgroundImage: `url(${contact.avatarURL})`
+                            }}>
+                        </div>    
+                        
+                        <div className='contact-details'>
+                            <p>{contact.name}</p>
+                            <p>{contact.handle}</p>
+                        </div>
+
+                        <button className='contact-remove'>
+                            Remove             
+                        </button>                       
+                    </li>
                 ))}
             </ol>
         )
